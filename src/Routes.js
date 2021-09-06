@@ -1,11 +1,16 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Router } from "react-router-dom";
+import { createBrowserHistory } from "history";
 
 import ListarFotos from "./pages/ListarFotos";
 
+const customHistory = createBrowserHistory();
+
 const Routes = () => (
     <BrowserRouter>
-        <Route component={ListarFotos} path="/" exact />
+        <Router history={customHistory}>
+            <Route component={ListarFotos} path="/" exact />
+        </Router>
     </BrowserRouter>
 );
 

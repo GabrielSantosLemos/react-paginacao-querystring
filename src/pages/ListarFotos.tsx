@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import useListarItens from "../hooks/useListarItens";
+import useListarFotos from "../hooks/useListarFotos";
 import usePaginacao from "../hooks/usePaginacao";
 
 export default function ListarFotos() {
-    
-    const { fotos, fetchFotos } = useListarItens(3);
+
+    const { fotos, fetchFotos } = useListarFotos(3);
     const { paginaAtual, setPaginaAtual } = usePaginacao()
 
     useEffect(() => {
@@ -38,9 +38,9 @@ export default function ListarFotos() {
                             <button
                                 key={index}
                                 onClick={() => setPaginaAtual(index + 1)}
-                                disabled={index ===paginaAtual -1 }
+                                disabled={index === paginaAtual - 1}
                             >
-                                {index}
+                                {index + 1}
                             </button>
                         );
                     })}

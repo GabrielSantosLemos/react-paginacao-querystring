@@ -1,10 +1,19 @@
 import { useState } from "react"
 
-export default function useListarItens (quant_por_pagina) {
- 
-    const [fotos, setFotos] = useState([])
 
-    async function fetchFotos (numero_da_pagina) {
+interface Foto {
+    albumId: number;
+    id: number;
+    title: string;
+    url: string;
+    thumbnailUrl: string;
+}
+
+export default function useListarFotos (quant_por_pagina: number) {
+ 
+    const [fotos, setFotos] = useState<Foto[]>([])
+
+    async function fetchFotos (numero_da_pagina: number) {
 
         const pagina = ((numero_da_pagina - 1 ) * quant_por_pagina) <= 0 ? 0 : ((numero_da_pagina - 1 ) * quant_por_pagina) 
         

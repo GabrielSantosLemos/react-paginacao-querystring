@@ -7,12 +7,12 @@ export default function usePaginacao() {
     const location = useLocation();
     const history = useHistory()
 
-    const [paginaAtual, setPaginaAtual] = useState(obterPaginaAtual() || 1);
+    const [paginaAtual, setPaginaAtual] = useState(getPaginaAtual() || 1);
 
-    function obterPaginaAtual() {
+    function getPaginaAtual() {
         const queryParams = qs.parse(location.search);
-        const pagina = queryParams.pagina;
-        return pagina ? Number(pagina) : undefined;
+        const page = queryParams.page;
+        return page ? Number(page) : undefined;
     }
 
     useEffect(() => {
@@ -23,6 +23,7 @@ export default function usePaginacao() {
                 page: paginaAtual
             })
         })
+        console.log("useEffect", location)
 
     }, [paginaAtual]);
 
@@ -31,3 +32,8 @@ export default function usePaginacao() {
         paginaAtual,
     };
 }
+
+// useEffect(() => {
+//     const queryParams = qs.parse(location.search);
+//     console.log("teste", queryParams)
+// }, [location.key])
